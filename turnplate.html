@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>turnplate</title>
+    <script src="https://lc.dbazure.cn/dbfx/dbfx.js"></script>
+    <script src="https://lc.dbazure.cn/dbfxui/dbfx.web.controls.js"></script>
+    <script src="https://lc.dbazure.cn/dbfx/dbfx.commodel.js"></script>
+    <script src="turnplate.js"></script>
+
+</head>
+<body>
+    <div id="layoutroot" style="height:500px;width:500px;border:1px solid blue">
+        <canvas id="wheelcanvas" width="422px" height="422px" style="border:1px solid #d3d3d3;">
+            您的浏览器不支持Canvas！！
+        </canvas>
+    </div>
+    <button type="button" value="旋转" onclick="rotate()" style="margin-left: 20px;background-color: #b3d4fc;width: 70px;height: 30px;font-size: 15px" >旋转
+    </button>
+    <button type="button" value="停止" onclick="stop()" style="margin-left: 20px;background-color: #b3d4fc;width: 70px;height: 30px;font-size: 15px" >停止
+    </button>
+
+    <div style="width: 900px;height: 300px;border: 2px solid cornflowerblue;overflow: auto;margin-top: 10px">
+        <b>控制台输出：</b>
+        <p class="print" style="display: block;height: 300px;width: 900px;">
+        </p>
+    </div>
+
+    <script>
+        var awards = [{
+            text:"9积分",
+            color:"#FFF4D6",
+            imgSrc:"1.png"
+        },{
+            text:"代金券",
+            color:"#FF6F55",
+            imgSrc:"2.png"
+        },{
+            text:"水壶",
+            color:"#7AFF79",
+            imgSrc:"1.png"
+        },{
+            text:"冰箱",
+            color:"#FF51DD",
+            imgSrc:"2.png"
+        },{
+            text:"电视",
+            color:"#4C2AFF",
+            imgSrc:"1.png"
+        },{
+            text:"999积分",
+            color:"#FF711E",
+            imgSrc:"2.png"
+        }
+        ];
+
+        try{
+            var turnPlate = new DBFX.Web.Draw.TurnPlate("TurnPlate");
+            turnPlate.awardDatas = awards;
+            turnPlate.textColor = "blue";
+//            turnPlate.awardIndex = 3;
+            turnPlate.drawWheel();
+        }catch (error){
+            DBFX.Web.Draw.Tools.print(error);
+        }
+
+        function rotate() {
+            try{
+                turnPlate.rotate();
+            }catch (error){
+                DBFX.Web.Draw.Tools.print(error);
+            }
+        }
+
+        function stop() {
+            try{
+                turnPlate.stopRotate();
+            }catch (error){
+                DBFX.Web.Draw.Tools.print(error);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
