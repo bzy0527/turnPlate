@@ -3,17 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>turnplate</title>
+    <link rel="stylesheet" href="turnplate.css">
     <script src="https://lc.dbazure.cn/dbfx/dbfx.js"></script>
     <script src="https://lc.dbazure.cn/dbfxui/dbfx.web.controls.js"></script>
     <script src="https://lc.dbazure.cn/dbfx/dbfx.commodel.js"></script>
+
+    <script src="https://lc.dbazure.cn/dbfx/dbfx.js"></script>
+    <script src="https://lc.dbazure.cn/dbfx/dbfx.data.js"></script>
+    <script src="https://lc.dbazure.cn/dbfx/dbfx.commodel.js"></script>
+    <script src="https://lc.dbazure.cn/dbfx/dbfx.serializer.js"></script>
+    <script src="https://lc.dbazure.cn/dbfx/dbfx.net.js"></script>
+    <script src="https://lc.dbazure.cn/dbfx/dbfx.resources.js"></script>
+
+    <script src="https://lc.dbazure.cn/dbfx/dbfx.commodel.js"></script>
+
+    <script src="https://lc.dbazure.cn/dbfx/dbfx.serializer.js"></script>
+    <script src="https://lc.dbazure.cn/dbfxui/dbfx.web.controls.js"></script>
+    <script src="https://lc.dbazure.cn/dbfxui/dbfx.web.layoutcontrols.js"></script>
+    <script src="https://lc.dbazure.cn/dbfxui/dbfx.web.navigation.js"></script>
     <script src="turnplate.js"></script>
 
 </head>
 <body>
-    <div id="layoutroot" style="height:500px;width:500px;border:1px solid blue">
-        <canvas id="wheelcanvas" width="422px" height="422px" style="border:1px solid #d3d3d3;">
-            您的浏览器不支持Canvas！！
-        </canvas>
+    <div id="layoutroot" style="height:500px;width:500px;border:1px solid green;background-color: #ffd2bc">
+        <!--<canvas id="wheelcanvas" width="422px" height="422px" style="border:1px solid #d3d3d3;">-->
+            <!--您的浏览器不支持Canvas！！-->
+        <!--</canvas>-->
     </div>
     <button type="button" value="旋转" onclick="rotate()" style="margin-left: 20px;background-color: #b3d4fc;width: 70px;height: 30px;font-size: 15px" >旋转
     </button>
@@ -27,12 +42,48 @@
     </div>
 
     <script>
+
+
+        DBFX.Web.Draw.Tools = {
+            print: function (t) {
+                //TODO:平台要打开注释,测试要注释这句代码
+                // return;
+
+                var printArr = new Array();
+                var date = new Date();  //创建对象
+                var y = date.getFullYear();     //获取年份
+                var m = date.getMonth() + 1;   //获取月份  返回0-11
+                var d = date.getDate(); // 获取日
+                // var w = date.getDay();   //获取星期几  返回0-6   (0=星期天)
+                var h = date.getHours();
+                var minute = date.getMinutes()
+                var s = date.getSeconds();
+                var time = y + "-" + m + "-" + d + "   " + h + ":" + minute + ":" + s;
+                printArr.push(time);
+                printArr.push('>>>>>>>>>' + t);
+                printArr.push('<br>');
+
+                var p = document.getElementsByClassName("print")[0];
+                printArr.forEach(function (t2) {
+                    p.innerHTML += t2;
+                });
+            },
+            //返回一定范围内的随机整数
+            randomInt:function (n,m) {
+                var random = Math.floor(Math.random()*(m-n+1)+n);
+                return random;
+            }
+        }
+
         var awards = [{
             text:"9积分",
             color:"#FFF4D6",
-            imgSrc:"1.png"
+            imgSrc:"1.png",
+            fontColor:"#5b2aff",
+            fontFamily:"Microsoft YaHei",
+            fontStyle:"normal"
         },{
-            text:"代金券",
+            text:"5元代金券",
             color:"#FF6F55",
             imgSrc:"2.png"
         },{
@@ -51,15 +102,28 @@
             text:"999积分",
             color:"#FF711E",
             imgSrc:"2.png"
+        },{
+            text:"10元代金券",
+            color:"#FF6F55",
+            imgSrc:"2.png"
         }
         ];
 
         try{
-            var turnPlate = new DBFX.Web.Draw.TurnPlate("TurnPlate");
-            turnPlate.awardDatas = awards;
-            turnPlate.textColor = "blue";
+            var di = document.getElementById("layoutroot");
+            var turnPlate = new DBFX.Web.Controls.TurnPlate("TurnPlate");
+            di.appendChild(turnPlate.VisualElement);
+
+            turnPlate.Width = "80%";
+            turnPlate.Height = "80%";
+
+
+            // turnPlate.textColor = "blue";
+
 //            turnPlate.awardIndex = 3;
-            turnPlate.drawWheel();
+//             turnPlate.drawWheel();
+
+            turnPlate.ItemSource = awards;
         }catch (error){
             DBFX.Web.Draw.Tools.print(error);
         }
@@ -74,11 +138,18 @@
 
         function stop() {
             try{
-                turnPlate.stopRotate();
+                // turnPlate.stopRotate();
+
+                turnPlate.stopAnimate();
             }catch (error){
                 DBFX.Web.Draw.Tools.print(error);
             }
         }
+
+
+        var date = +new Date();
+        console.log("5" == 5);
+        console.log(window.supportedCSS);
 
 
     </script>

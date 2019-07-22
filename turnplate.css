@@ -1,0 +1,31 @@
+.TurnPlate{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently not supported by any browser */
+
+    width: 300px;
+    height: 300px;
+    background-size: 100% 100%;
+    position: relative;
+
+    color: #000;
+    font-size: 12px;
+    font-style: normal;
+    font-family: "Microsoft YaHei";
+}
+
+.TurnPlate_Canvas{
+    width: 100%;
+    height:100%;
+}
+
+.TurnPlate_StartImg{
+    position: absolute;
+    width: 31.5%;
+    height: 42.5%;
+    left: 34.6%;
+    top: 23%;
+}

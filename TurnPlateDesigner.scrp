@@ -1,4 +1,4 @@
-﻿<?<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <screenpart BackgroundColor="Transparent" HorizonScrollbar="Hidden" Margin="0px" Padding="0px" Serializer="DBFX.Serializer.FormPartSerializer">
 
   <xns>
@@ -8,53 +8,28 @@
   </xns>
 
   <controls>
+     <c T="wc:Panel"  Name="SVGPanelDesignerPanel" Shadow="none" BorderWidth="0px" Margin="2px 0px 2px 0px" MinWidth="230px" BackgroundColor="#ddd">
+               <controls>
+               <c T="wc:BreakLine" />
+               <c T="wc:Label" Text="开始按钮图片:" Margin="4px 2px 2px 16px" Float="left"/>
+               <c T="dv:TypeEditors.ImageChooseButton" Display="block"  Margin="2px 14px 2px 16px" BindProperty="StartImg" />
 
-    <c T="wc:Panel"  Shadow="none" BorderWidth="0px" Margin="2px 0px 2px 0px" MinWidth="230px" >
-      <controls>
+               <c T="wc:BreakLine" />
+               <c T="wc:Label" Text="背景图片:" Margin="4px 2px 2px 16px" Float="left"/>
+               <c T="dv:TypeEditors.ImageChooseButton" Display="block"  Margin="2px 14px 2px 16px" BindProperty="BgImg" />
 
-    <c T="wc:BreakLine" BackgroundColor="lightgray"  BorderWidth="0px"    Height="1px" Margin="2px" />
-    <c T="wc:BreakLine" />
+               <c T="wc:BreakLine" />
+               <c T="wc:Label" Text="旋转时间(ms):" Margin="4px 2px 2px 16px" Float="left"/>
+               <c T="wc:TextBox" Display="block" Height="26px" Margin="2px 14px 2px 16px" DataBindings="{&quot;Path&quot;:&quot;Duration&quot;,&quot;Mode&quot;:&quot;OneWay&quot;,&quot;Source&quot;:&quot;&quot;}" />
 
-    <c T="wc:Label" Text="外圆半径:" Margin="0px 2px 2px 16px" Float="left"/>
-    <c T="wc:TextBox"  Display="block"  Margin="4px 14px 2px 16px" DataBindings="{&quot;Path&quot;:&quot;OutsideRadius&quot;,&quot;Mode&quot;:&quot;OneWay&quot;,&quot;Source&quot;:&quot;&quot;}"/>
+               <c T="wc:BreakLine" />
+               <c T="wc:Label" Text="旋转圈数:" Margin="4px 2px 2px 16px" Float="left"/>
+               <c T="wc:TextBox" Display="block" Height="26px" Margin="2px 14px 2px 16px" DataBindings="{&quot;Path&quot;:&quot;RCount&quot;,&quot;Mode&quot;:&quot;OneWay&quot;,&quot;Source&quot;:&quot;&quot;}" />
 
-    <c T="wc:Label" Text="内圆半径:" Margin="0px 2px 2px 16px" Float="left"/>
-    <c T="wc:TextBox"  Display="block"  Margin="4px 14px 2px 16px" DataBindings="{&quot;Path&quot;:&quot;InsideRadius&quot;,&quot;Mode&quot;:&quot;OneWay&quot;,&quot;Source&quot;:&quot;&quot;}"/>
+               </controls>
+           </c>
 
-    <c T="wc:Label" Text="文字位置半径:" Margin="0px 2px 2px 16px" Float="left"/>
-    <c T="wc:TextBox"  Display="block"  Margin="4px 14px 2px 16px" DataBindings="{&quot;Path&quot;:&quot;TextRadius&quot;,&quot;Mode&quot;:&quot;OneWay&quot;,&quot;Source&quot;:&quot;&quot;}"/>
-
-    <c T="wc:Label" Text="文字颜色:" Margin="0px 2px 2px 16px"/>
-    <c T="wc:ColorPicker"  Width="64px" Margin="2px" DataBindings="{&quot;Path&quot;:&quot;TextColor&quot;,&quot;Mode&quot;:&quot;OneWay&quot;,&quot;Source&quot;:&quot;&quot;}" />
-
-    <c T="wc:Label" Text="餐椅颜色:" Margin="0px 2px 2px 6px"/>
-    <c T="wc:ColorPicker"  Width="64px" Margin="2px" DataBindings="{&quot;Path&quot;:&quot;DeskColor&quot;,&quot;Mode&quot;:&quot;OneWay&quot;,&quot;Source&quot;:&quot;&quot;}" />
-
-    <c T="wc:Label" Text="餐桌编号:" Margin="0px 2px 2px 16px" Float="left"/>
-    <c T="wc:TextBox"  Display="block"  Margin="4px 14px 2px 16px" DataBindings="{&quot;Path&quot;:&quot;TableNum&quot;,&quot;Mode&quot;:&quot;OneWay&quot;,&quot;Source&quot;:&quot;&quot;}"/>
-
-    <c T="wc:BreakLine" BackgroundColor="lightgray"    Height="1px" Margin="8px 2px 0px 2px"/>
-    <c T="wc:Label" Text="透  明  度:" Margin="4px 2px 2px 16px" Float="left"/>
-    <c T="wc:TextBox"  Display="block"  Margin="4px 14px 2px 16px" DataBindings="{&quot;Path&quot;:&quot;Alpha&quot;,&quot;Mode&quot;:&quot;OneWay&quot;,&quot;Source&quot;:&quot;&quot;}"/>
-
-    <c T="wc:Panel" Margin="0px 2px 2px 16px"  Shadow="none" BorderWidth="0px 0px 0px 1px"   HorizonScrollbar="Hidden" VerticalScrollbar="hidden">
-          <controls>
-            <c T="wc:Label" Text="左:" Margin="4px 2px 2px 16px" />
-            <c T="wc:TextBox" Width="64px" Margin="2px"  DataBindings="{&quot;Path&quot;:&quot;MinX&quot;,&quot;Mode&quot;:&quot;OneWay&quot;,&quot;Source&quot;:&quot;&quot;}" />
-            <c T="wc:Label" Text="上:" Margin="4px 2px 2px 6px"/>
-            <c T="wc:TextBox"  Width="64px" Margin="2px" DataBindings="{&quot;Path&quot;:&quot;MinY&quot;,&quot;Mode&quot;:&quot;OneWay&quot;,&quot;Source&quot;:&quot;&quot;}" />
-
-            <c T="wc:BreakLine" BackgroundColor="lightgray"  Height="1px" Margin="4px 2px 2px 2px" />
-
-            <c T="wc:Label" Text="右:" Margin="0px 2px 2px 16px"/>
-            <c T="wc:TextBox"  Width="64px" Margin="2px" DataBindings="{&quot;Path&quot;:&quot;MaxX&quot;,&quot;Mode&quot;:&quot;OneWay&quot;,&quot;Source&quot;:&quot;&quot;}" />
-            <c T="wc:Label" Text="下:" Margin="0px 2px 2px 6px"/>
-            <c T="wc:TextBox"  Width="64px" Margin="2px" DataBindings="{&quot;Path&quot;:&quot;MaxY&quot;,&quot;Mode&quot;:&quot;OneWay&quot;,&quot;Source&quot;:&quot;&quot;}" />
-
-            <c T="wc:BreakLine" BackgroundColor="lightgray"  BorderWidth="0px"    Height="1px" Margin="2px" />
-             </controls>
+        <c T="dv:TypeEditors.EventList" Name="EventListBox" Text="事件处理程序" Shadow="node" Margin="2px 0px 2px 0px" MinWidth="64px">
         </c>
-      </controls>
-    </c>
   </controls>
 </screenpart>
