@@ -78,34 +78,34 @@
         var awards = [{
             text:"9积分",
             color:"#FFF4D6",
-            imgSrc:"1.png",
+            imgSrc:"./1.png",
             fontColor:"#5b2aff",
             fontFamily:"Microsoft YaHei",
             fontStyle:"normal"
         },{
             text:"5元代金券",
             color:"#FF6F55",
-            imgSrc:"2.png"
+            imgSrc:"./2.png"
         },{
             text:"水壶",
             color:"#7AFF79",
-            imgSrc:"1.png"
+            imgSrc:"./1.png"
         },{
             text:"冰箱",
             color:"#FF51DD",
-            imgSrc:"2.png"
+            imgSrc:"./2.png"
         },{
             text:"电视",
             color:"#4C2AFF",
-            imgSrc:"1.png"
+            imgSrc:"./1.png"
         },{
             text:"999积分",
             color:"#FF711E",
-            imgSrc:"2.png"
+            imgSrc:"./2.png"
         },{
             text:"10元代金券",
             color:"#FF6F55",
-            imgSrc:"2.png"
+            imgSrc:"./2.png"
         }
         ];
 
@@ -113,6 +113,26 @@
             var di = document.getElementById("layoutroot");
             var turnPlate = new DBFX.Web.Controls.TurnPlate("TurnPlate");
             di.appendChild(turnPlate.VisualElement);
+
+            turnPlate.FontStyle = "italic";
+            // turnPlate.FontSize = "8px";
+            // turnPlate.FontFamily = "SimSun";
+
+
+            turnPlate.RotateStart = function () {
+                turnPlate.CanRotate = true;
+                turnPlate.Enabled = false;
+                turnPlate.SelectedIndex = 0;
+
+                turnPlate.startAnimate();
+            }
+
+            turnPlate.RotateStop = function () {
+                turnPlate.CanRotate = true;
+                turnPlate.Enabled = true;
+
+                // turnPlate.startAnimate();
+            }
 
             turnPlate.Width = "80%";
             turnPlate.Height = "80%";
@@ -124,13 +144,17 @@
 //             turnPlate.drawWheel();
 
             turnPlate.ItemSource = awards;
+
+
         }catch (error){
             DBFX.Web.Draw.Tools.print(error);
         }
 
         function rotate() {
             try{
-                turnPlate.rotate();
+
+
+
             }catch (error){
                 DBFX.Web.Draw.Tools.print(error);
             }
