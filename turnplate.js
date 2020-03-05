@@ -259,7 +259,7 @@ DBFX.Web.Controls.TurnPlate = function (t) {
     });
 
 
-    //FIXME：绘制转盘
+    //绘制转盘
     tp.drawWheel = function () {
 
         var loadC = 0;//有效图片加载的次数
@@ -515,9 +515,14 @@ DBFX.Web.Controls.TurnPlate = function (t) {
         return random;
     }
 
+    //标记是否在执行动画
+    tp.isAnimate = false;
     //开始按钮点击事件
     tp.startBtnClick = function (ev) {
         if(!tp.enabled) return;
+
+        if(tp.isAnimate)return;
+        tp.isAnimate = !tp.isAnimate;
 
         //添加开始动画事件
         if (tp.RotateStart != undefined) {
@@ -607,13 +612,15 @@ DBFX.Web.Controls.TurnPlate = function (t) {
         clearTimeout(tp.timeoutId);
 
         tp.bRotate = false;
+        tp.isAnimate = false;
 
-        if(tp.index){
+        if(!isNaN(tp.index)){
             tp.SelectedData = tp.itemSource[tp.index];
         }else {
             tp.SelectedData = null;
         }
 
+        console.log(tp.SelectedData);
 
         //TODO:添加停止动画事件
         if (tp.RotateStop != undefined) {
